@@ -1,6 +1,12 @@
 mvn spring-boot:build-image
-docker run --tty --publish 8083:8080 demo:0.0.1-SNAPSHOT
-192.168.99.100:8083
+Make Sure Jenkin is running on port 8080
+Go to the directory where you installed Jenkins (by default, it's under Program Files/Jenkins)
+Open the Jenkins.xml configuration file.
+You can find --httpPort=8080 and replace the 8080 with the new port number.
+Restart your Jenkins server.
+$ jenkins.exe restart
+docker run --tty --publish 8080:8080 demo:0.0.1-SNAPSHOT
+
 
 
 #Open Jenkins
@@ -48,7 +54,7 @@ docker run --tty --publish 8083:8080 demo:0.0.1-SNAPSHOT
 25. In Jenkins Console Output log you will find(Successfully tagged satishchpn/docker-jenkins-integration-demo:latest),here 	satishchpn/docker-jenkins-integration-demo:latest is the image name with latest tag
 25. This images can be utilized to run the application in the VM/Cloud Server 
 26. Open Cmd and run below command 
- 	docker run --tty  --name myhost --publish 8083:8080 satishchpn/docker-jenkins-integration-demo:latest
+ 	docker run --tty  --name myhost --publish 8080:8080 satishchpn/docker-jenkins-integration-demo:latest
  	Here container name=myhost
  	To See Cointer Ip Address :  docker inspect --format="{{json .NetworkSettings.IPAddress}}"  myhost
  	To See Cointer Networks Details :  docker inspect --format="{{json .NetworkSettings.Networks}}"  myhost
